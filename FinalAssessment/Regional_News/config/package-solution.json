@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "regional-news-client-side-solution",
+    "id": "964850cb-0422-41a8-9ca9-03248203e0cb",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/regional-news.sppkg"
+  }
+}

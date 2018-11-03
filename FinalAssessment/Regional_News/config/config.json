@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "regional-news-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/regionalNews/RegionalNewsWebPart.js",
+          "manifest": "./src/webparts/regionalNews/RegionalNewsWebPart.manifest.json"
+        }
+      ]
+    },
+    "announcements-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/announcements/AnnouncementsWebPart.js",
+          "manifest": "./src/webparts/announcements/AnnouncementsWebPart.manifest.json"
+        }
+      ]
+    },
+    "latest-updates-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/latestUpdates/LatestUpdatesWebPart.js",
+          "manifest": "./src/webparts/latestUpdates/LatestUpdatesWebPart.manifest.json"
+        }
+      ]
+    },
+    "people-speak-final-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/peopleSpeakFinal/PeopleSpeakFinalWebPart.js",
+          "manifest": "./src/webparts/peopleSpeakFinal/PeopleSpeakFinalWebPart.manifest.json"
+        }
+      ]
+    },
+    "rewards-and-recognition-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/rewardsAndRecognition/RewardsAndRecognitionWebPart.js",
+          "manifest": "./src/webparts/rewardsAndRecognition/RewardsAndRecognitionWebPart.manifest.json"
+        }
+      ]
+    },
+    "podcast-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/podcast/PodcastWebPart.js",
+          "manifest": "./src/webparts/podcast/PodcastWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": {
+      "path": "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js",
+      "globalName": "jquery"
+    },
+    "bootstrap": {
+      "path": "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js",
+      "globalName": "bootstrap",
+      "globalDependencies": [
+        "jquery"
+      ]
+    }
+  },
+  "localizedResources": {
+    "RegionalNewsWebPartStrings": "lib/webparts/regionalNews/loc/{locale}.js",
+    "AnnouncementsWebPartStrings": "lib/webparts/announcements/loc/{locale}.js",
+    "LatestUpdatesWebPartStrings": "lib/webparts/latestUpdates/loc/{locale}.js",
+    "PeopleSpeakFinalWebPartStrings": "lib/webparts/peopleSpeakFinal/loc/{locale}.js",
+    "RewardsAndRecognitionWebPartStrings": "lib/webparts/rewardsAndRecognition/loc/{locale}.js",
+    "PodcastWebPartStrings": "lib/webparts/podcast/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": false,
+    "environment": "spo",
+    "version": "1.6.0",
+    "libraryName": "regional-news",
+    "libraryId": "964850cb-0422-41a8-9ca9-03248203e0cb",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
