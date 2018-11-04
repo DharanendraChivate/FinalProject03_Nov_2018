@@ -29,15 +29,7 @@ export default class RegionalNewsWebPart extends BaseClientSideWebPart<IRegional
         
         <div class = "panel-body">
           <ul style="list-style-type:none;" id="RegionalNewsList">
-          <!--  <li style="border-top: 0; border-left: 0; border-right: 0; margin-top: 10%;"><a href="#">&raquo;&nbsp; Cras justo odio</a><p style="font-size: x-small;">March 28, 2018</p></li>
-            <hr>
-            <li style="border-top: 0; border-left: 0; border-right: 0; "><a href="#">&raquo;&nbsp; Dapibus ac facilisis in</a><p style="font-size: x-small;">April 15, 2018</p></li>
-            <hr>
-            <li style="border-top: 0; border-left: 0; border-right: 0;"><a href="#">&raquo;&nbsp; Morbi leo risus</a><p style="font-size: x-small;">April 20, 2018</p></li>
-            <hr>
-            <li style="border-top: 0; border-left: 0; border-right: 0;"><a href="#">&raquo;&nbsp; Porta ac consectetur ac</a><p style="font-size: x-small;">April 25, 2018</p></li>
-            <hr>
-            <li style="border-top: 0; border-left: 0; border-right: 0;"><a href="#">&raquo;&nbsp; Vestibulum at eros</a><p style="font-size: x-small;">May 15, 2018</p></li> -->
+          
           </ul>
         </div>
       </div>`;
@@ -47,13 +39,13 @@ export default class RegionalNewsWebPart extends BaseClientSideWebPart<IRegional
 
   readyFunc()
   {
-    var Absourl = this.context.pageContext.web.absoluteUrl;   
+    var Absoluteurl = this.context.pageContext.web.absoluteUrl;   
     -
     $(document).ready(function(){
       DisplayRegionalNews();
       function DisplayRegionalNews(){
         var call = jQuery.ajax({
-          url: Absourl + "/_api/Web/Lists/getByTitle('SpfxRegionalNews')/Items?$top=3&$orderby=Created desc",
+          url: Absoluteurl + "/_api/Web/Lists/getByTitle('SpfxRegionalNews')/Items?$top=3&$orderby=Created desc",
           type: "GET",
           dataType: "json",
           async: false,  

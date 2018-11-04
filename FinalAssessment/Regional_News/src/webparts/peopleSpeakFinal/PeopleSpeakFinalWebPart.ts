@@ -1,10 +1,6 @@
 import { Version,Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-       } 
-from '@microsoft/sp-webpart-base';
+import {BaseClientSideWebPart,IPropertyPaneConfiguration,PropertyPaneTextField
+       } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 import{SPComponentLoader} from '@microsoft/sp-loader';//to load all the css cdn paths which were used
 require('jquery');
@@ -31,7 +27,7 @@ export default class PeopleSpeakFinalWebPart extends BaseClientSideWebPart<IPeop
     <!-- Inserting Panel  -->
     <div class="panel panel-default">
     <div class="panel-heading col-md-12"  style="background-color: #023576; color: #ccd6e4;">
-    <!-- <div class="panel-heading col-md-12" style=''>-->
+    <!-- <div class="panel-heading col-md-12" style='${styles.navheader}'>-->
 
     <div style="float: left; font-size:large;">People Speak</div> 
     <div style="float: right;"> 
@@ -43,20 +39,22 @@ export default class PeopleSpeakFinalWebPart extends BaseClientSideWebPart<IPeop
 
     <!-- Inserting Carousel in the Panel -->
 
-    <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+    <div id="PeopleSpeakCarousel" class="carousel slide" data-ride="carousel">
     
+
     <!-- Wrapper for slides -->
-    <div class="carousel-inner" id="Innerbind">
+    <div class="carousel-inner" id="DisplaySlides">
 
     </div>
     
+
     <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel1" data-slide="prev" style="margin-top:50%;height: max-content;">
+    <a class="left carousel-control" href="#PeopleSpeakCarousel" data-slide="prev" style="margin-top:50%;height: max-content;">
     <button class="btn btn-sq btn-warning btn-xs" style="margin-right: 45%;">
     <i class='fas fa-angle-left fa-2x' style=''></i>
     </button>
     </a>
-     <a class="right carousel-control" href="#myCarousel1" data-slide="next" style="margin-top:50%; height: max-content;">
+     <a class="right carousel-control" href="#PeopleSpeakCarousel" data-slide="next" style="margin-top:50%; height: max-content;">
      <button class="btn btn-sq btn-warning btn-xs" style="margin-left: 45%; btn-xs">
      <i class='fas fa-angle-right fa-2x' style=''></i>
      </button>
@@ -64,14 +62,15 @@ export default class PeopleSpeakFinalWebPart extends BaseClientSideWebPart<IPeop
      </div>
      </div>  
 
-     <button type="button" id="NavigationList" class="btn btn-warning btn-sm center-block " style="color:#0000ff; position: absolute; top:92%; right:39%;">View All</button>
+    
+     <button type="button" id="NavigateToList" class="btn btn-warning btn-sm center-block " style="color:#0000ff; position: absolute; top:92%; right:39%;">View All</button>
       `;
 
      this.DisplayData();
 
     }
 
-  private DisplayData(){
+   private DisplayData(){
     try{
 
     var absoluteUrl = this.context.pageContext.web.absoluteUrl;
@@ -92,20 +91,18 @@ export default class PeopleSpeakFinalWebPart extends BaseClientSideWebPart<IPeop
       });
 
     call.done(function (data,textStatus,jqXHR) {
-    var Slider = $("#Innerbind");
+    var Slider = $("#DisplaySlides");
     var Active;
     $.each(data.d.results, function (index,value) {
      //The First Slide Of The Carousel Should Be in The ActiveClass
     if(index=='0')
-    {
-    Active="item active"
+    { Active="item active"
     }
-    else
-    {
+    else{
     Active="item"
     };
     // binding data to wrapper for slides 
-    Slider.append("<div class='"+Active+"'><img src='"+value.Picture.Description+"' style='width:100%;height:230px;opacity: 1;'><div class='carousel-caption' style='position: absolute;bottom: 8px;left: -40px; padding-bottom: 0px;'><h6><p style='background-color:#080808; opacity:0.6;'>"+value.Title+"<br/><i>"+value.Designation+"</i></p></h6></div>  </div>");
+    Slider.append("<div class='"+Active+"'><img src='"+value.Picture.Description+"' style='width:100%;height:230px;opacity: 1;'><div class='carousel-caption' style='position: absolute;bottom: 8px;left: -40px; padding-bottom: 0px;'><h6><p style='background-color:#080808; color:white;opacity:0.6;'>"+value.Title+"<br/><i>"+value.Designation+"</i></p></h6></div>  </div>");
      }); 
      });
 
@@ -116,7 +113,7 @@ export default class PeopleSpeakFinalWebPart extends BaseClientSideWebPart<IPeop
     });
 
     // function to navigate to the list page when clicking on the view all function 
-    $(document).on("click","#NavigationList",function(){
+    $(document).on("click","#NavigateToList",function(){
       //$(this).attr('target','_blank');
     window.open("https://acuvateuk.sharepoint.com/sites/TrainingDevSite/Lists/SpfxPeopleSpeak/AllItems.aspx",'_blank');
     })

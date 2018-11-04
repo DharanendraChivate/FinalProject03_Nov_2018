@@ -168,7 +168,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
         call.fail(function (jqXHR, textStatus, errorThrown) {
             var response = JSON.parse(jqXHR.responseText);
             var message = response ? response.error.message.value : textStatus;
-            alert("Call hutch failed. Error: " + message);
+            alert("Call failed. Error: " + message);
         });
       }
       function getTotalPerson(){
@@ -274,11 +274,10 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
         RewardsAndRecorgnitionDivcall.fail(function (jqXHR, textStatus, errorThrown) {
           var response = JSON.parse(jqXHR.responseText);
           var message = response ? response.error.message.value : textStatus;
-          alert("Call hutch failed. Error: " + message);
+          alert("Call failed. Error: " + message);
       })
       }
   }
-
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
