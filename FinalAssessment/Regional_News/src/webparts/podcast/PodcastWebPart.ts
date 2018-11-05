@@ -1,7 +1,6 @@
 import {
   Version,
   Log,
-  ServiceScope,
   Environment,
   EnvironmentType
 } from '@microsoft/sp-core-library';
@@ -158,7 +157,6 @@ export default class PodcastWebPart extends BaseClientSideWebPart<IPodcastWebPar
       this.domElement.querySelector('#Error').innerHTML = "Sorry this does not work in local workbench";
     }
     else {
-
       $(document).ready(function () {
 
         $(document).on('click', '#ReadMore', function () {
@@ -166,6 +164,7 @@ export default class PodcastWebPart extends BaseClientSideWebPart<IPodcastWebPar
 
           $('#ReadMorePodCast').modal('show');
         });
+        
         GetUserDetails();
         SPFXPodcast();
         SPFXPodcastLikesCount();
@@ -374,6 +373,7 @@ export default class PodcastWebPart extends BaseClientSideWebPart<IPodcastWebPar
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [

@@ -27,7 +27,7 @@ export default class RegionalNewsWebPart extends BaseClientSideWebPart<IRegional
             <div style="float: left; font-size: large;">Regional News </div> <div style="float: right;"> <button class="btn btn-warning btn-xs" type="button"style=" height: 31px;"><i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i></button></div>
         </div>
         
-        <div class = "panel-body">
+        <div class = "panel-body" id="panelbody">
           <ul style="list-style-type:none;" id="RegionalNewsList">
           
           </ul>
@@ -41,7 +41,7 @@ export default class RegionalNewsWebPart extends BaseClientSideWebPart<IRegional
 
     if (Environment.type === EnvironmentType.Local)
      {
-      this.domElement.querySelector('#Error').innerHTML = "Sorry this does not work in local workbench";
+      this.domElement.querySelector('#panelbody').innerHTML = "Sorry this does not work in local workbench";
     } else 
     {
       var Absoluteurl = this.context.pageContext.web.absoluteUrl;
