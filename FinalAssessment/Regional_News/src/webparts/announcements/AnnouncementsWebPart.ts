@@ -36,7 +36,7 @@ export default class AnnouncementsWebPart extends BaseClientSideWebPart<IAnnounc
 
     $(document).ready(function () {
     });
-    this.getCarousal();
+    this.getCarousal();//function to get list items and display along with carousal
   }
   getCarousal() {
     //alert("entered get carousal event");
