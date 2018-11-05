@@ -221,7 +221,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
           TotalLikePerPerson.push(data.d.results.length);
           for(var checkCount=0; checkCount<data.d.results.length; checkCount++){
             
-            alreadyliked.push({UserLikedId:data.d.results[0].UserLookupId, RewardUserId:CurrentUserId });
+            alreadyliked.push({UserLikedId:data.d.results[checkCount].UserLookupId, RewardUserId:data.d.results[checkCount].AuthorId });
             
           }
         });
