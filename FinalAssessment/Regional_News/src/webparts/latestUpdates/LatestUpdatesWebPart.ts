@@ -35,6 +35,7 @@ export default class LatestUpdatesWebPart extends BaseClientSideWebPart<ILatestU
        
       });
   }
+  /*************getting the latest 3 updates**************/
   private GetUpdates()
   {
     if (Environment.type === EnvironmentType.Local)   //Checking Environment

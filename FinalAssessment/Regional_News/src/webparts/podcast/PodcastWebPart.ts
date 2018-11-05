@@ -35,24 +35,6 @@ export default class PodcastWebPart extends BaseClientSideWebPart<IPodcastWebPar
 
   public render(): void {
 
-    // this.context.statusRenderer.clearError(this.domElement);
-    // this.context.statusRenderer.displayLoadingIndicator(this.domElement, strings.Loading);
-    // Log.verbose('SpFxNuggets', 'Invoking render');
-
-    // this._webInfoProvider.getWebInfo().then((webInfo: IWebInfo) => {
-    //   if (this.properties.fail) {
-    //     throw new Error('Mayday');
-    //   }
-    //   Log.info('SpFxNuggets', 'Service OK', this.context.serviceScope);
-    //   this.context.statusRenderer.clearLoadingIndicator(this.domElement);
-    //   this.context.domElement.innerHTML = `<h1>${webInfo.title}</h1>`;
-
-    // }).catch((err) => {
-    //   Log.error('SpFxNuggets', err);
-    //   this.context.statusRenderer.clearLoadingIndicator(this.domElement);
-    //   this.context.statusRenderer.renderError(this.domElement, err);
-    // });
-
     AbsoluteUrl = this.context.pageContext.web.absoluteUrl;
     var contextuser = this.context.pageContext.user.email;
 

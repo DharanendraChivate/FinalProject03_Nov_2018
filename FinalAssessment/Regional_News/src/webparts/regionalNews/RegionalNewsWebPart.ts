@@ -47,6 +47,8 @@ export default class RegionalNewsWebPart extends BaseClientSideWebPart<IRegional
       var Absoluteurl = this.context.pageContext.web.absoluteUrl;
       $(document).ready(function () {
         DisplayRegionalNews();
+
+        /*************Get Latest 3 Regional News*****************/
         function DisplayRegionalNews() {
           var call = jQuery.ajax({
             url: Absoluteurl + "/_api/Web/Lists/getByTitle('SpfxRegionalNews')/Items?$top=3&$orderby=Created desc",

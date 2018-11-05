@@ -57,11 +57,13 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
         
       });
       var CommentUser;
+      /************showing all the comment for the perticular user***********/
       $(document).on('click','.comment',function (){
         CommentUser = $(this).attr("id");
         getIncreaseTheComment(CommentUser);
         $('#commentModal').modal('show');
       });
+      /************storing the comment*****************/
       $(document).on('click','.btn-success',function (){
         var CommentValue =$("#Comments").val().toString().trim().replace("  ", " ");
         if(CommentValue==null ||CommentValue=='' || CommentValue.search("%@%")>=0){
@@ -76,6 +78,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
         })
       }
       });
+      /***********inserting the like and checking aready liked****************/
       $(document).on('click','.Like',function (){
         var UserID:any = $(this).attr("id");
         for(var VerifyPresenseCount=0; VerifyPresenseCount<alreadyliked.length; VerifyPresenseCount++){
@@ -87,6 +90,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
           InsertLike(UserID);
         }
       });
+      /*******************getting the userId of Current user*******************/
       function GetUserDetails() { 
         var url =Context+ "/_api/web/currentuser"; 
           $.ajax({ 
@@ -103,6 +107,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
             } 
           }); 
         }  
+        /***************inserting the like into the list *********************/
       function InsertLike(UserID){
         pnp.sp.web.lists.getByTitle('SpfxRewardsAndRecognitionLikes').items.add({UserLookupId:UserID}).then(()=>{
           GetUserDetails();
@@ -113,7 +118,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
           alreadyPresent = false;
         })
       }
-     
+      /***********showing all the comment according to the person in PopUp**********/
       function getIncreaseTheComment(a){
         var table = null;
           var call = $.ajax({
@@ -171,6 +176,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
             alert("Call failed. Error: " + message);
         });
       }
+      /*********gathering latest 3 the rewarded person********/
       function getTotalPerson(){
         
         var TotalPersonCall = $.ajax({
@@ -198,6 +204,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
           alert("Call hutch failed. Error: " + message);
       });
       }
+      /***get total Like count per user***/
       function getTotalLike(element){
         
         var TotalPersonLikeCall = $.ajax({
@@ -213,7 +220,8 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
         TotalPersonLikeCall.done(function (data, textStatus, jqXHR) {
           TotalLikePerPerson.push(data.d.results.length);
           for(var checkCount=0; checkCount<data.d.results.length; checkCount++){
-            alreadyliked.push({UserLikedId:data.d.results[0].UserLookupId, RewardUserId:data.d.results[0].AuthorId });
+            
+            alreadyliked.push({UserLikedId:data.d.results[0].UserLookupId, RewardUserId:CurrentUserId });
             
           }
         });
@@ -223,6 +231,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
           alert("Call hutch failed. Error: " + message);
       });
       }
+      /***get total comment count per user***/
       function getTotalComment(element){
         
         var TotalPersonLikeCall = $.ajax({
@@ -237,7 +246,6 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
         });
         TotalPersonLikeCall.done(function (data, textStatus, jqXHR) {
           TotalCommentPerPerson.push(data.d.results.length);
-         // alert(data.d.results.length)
         });
         TotalPersonLikeCall.fail(function (jqXHR, textStatus, errorThrown) {
           var response = JSON.parse(jqXHR.responseText);
@@ -245,6 +253,7 @@ export default class RewardsAndRecognitionWebPart extends BaseClientSideWebPart<
           alert("Call hutch failed. Error: " + message);
       });
       }
+      /*****showing all the rewardees********/
       function GetRewardsInformation(){
         var RewardsAndRecorgnitionDiv = $(".RewardsAndRecorgnition");
         var RewardsAndRecorgnitionDivcall = $.ajax({
